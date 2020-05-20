@@ -10,8 +10,11 @@ fi
 arch=armhf
 series=focal
 chroot_d=$arch-$series-rootfs
-# coreXX must match series (18 if bionic, 20 if focal, etc.)
-snaps=(snapcraft core20)
+# List of snaps to be included in the image. We want snapcraft and
+# core18, which is the base for the snapcraft snap. We also might want
+# anoter coreXX snap matching the series (16 if xenial, 20 if focal,
+# etc.)
+snaps=(snapcraft core18 core20)
 
 # Create chroot, this can take a while...
 qemu-debootstrap --arch $arch $series $chroot_d

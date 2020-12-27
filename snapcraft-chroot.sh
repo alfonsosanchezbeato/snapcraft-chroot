@@ -14,6 +14,9 @@ finish() {
 }
 trap finish EXIT
 
+# "Simulate" docker so snapcraft does not try to talk to snapd
+touch "$chroot_dir"/.dockerenv
+
 mount -t proc none "$chroot_dir"/proc
 mount -t sysfs none "$chroot_dir"/sys
 chroot "$chroot_dir"
